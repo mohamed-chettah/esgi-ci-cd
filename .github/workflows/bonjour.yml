@@ -9,6 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4 # Récupère le contenu du dépôt correspondant au commit du workflow en cours
       - uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
       - run: docker image build --tag="${IMAGE_NAME}" ./
       - run: docker container run --volume="$(pwd)":/app "${IMAGE_NAME}" npm run lint
 
