@@ -9,7 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4 # Récupère le contenu du dépôt correspondant au commit du workflow en cours
       - run: docker image build --tag="${IMAGE_NAME}" ./
+      - run: echo 'Hello Error' > ./index.js
       - run: docker container run "${IMAGE_NAME}" npm run lint npm run hadolint
       - run: docker container run --volume="$(pwd)":/app "${IMAGE_NAME}" npm run lint npm run hadolint
-      
+
 
