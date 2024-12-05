@@ -11,4 +11,5 @@ jobs:
       - run: docker image build --tag="${IMAGE_NAME}" ./
       - run: docker container run "${IMAGE_NAME}" npm run lint npm run hadolint
       - run: docker container run --volume="$(pwd)":/app "${IMAGE_NAME}" npm run lint npm run hadolint
+      
 
